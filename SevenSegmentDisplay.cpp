@@ -22,7 +22,7 @@ uint8_t SevenSegmentDisplay::Decode4Bit(const uint8_t bits) {
 	}
 	
 	// get individual bits as booleans
-	bool A = negative;
+	bool A = (bit4 & 0b1000) == 0b1000;;
 	bool B = (bit4 & 0b100) == 0b100;
 	bool C = (bit4 & 0b10) == 0b10;
 	bool D = (bit4 & 0b1) == 0b1;

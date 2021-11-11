@@ -22,7 +22,7 @@ int main() {
 	std::cout << static_cast<int>(d) << std::endl << std::endl;
 
 	// seven segment display
-	int8_t e = -5;
+	int8_t e = -1;
 	uint8_t ssd = SevenSegmentDisplay::Decode4Bit(e);
 
 	std::cout << std::bitset<8>(e) << std::endl;
