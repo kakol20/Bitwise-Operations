@@ -14,7 +14,7 @@ uint8_t SevenSegmentDisplay::Decode4Bit(const uint8_t bits) {
 	uint8_t bit4 = bits;
 	uint8_t output = 0;
 
-	// convert Two Complacent to One
+	// get absolute value if negative
 	if (negative) {
 		bit4 = ~(bit4 - 1);
 
