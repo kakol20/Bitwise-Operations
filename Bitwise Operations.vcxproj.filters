@@ -24,12 +24,18 @@
     <ClCompile Include="SevenSegmentDisplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LinearFeedbackShift.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TwoComplacent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SevenSegmentDisplay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearFeedbackShift.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

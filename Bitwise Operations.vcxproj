@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LinearFeedbackShift.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SevenSegmentDisplay.cpp" />
     <ClCompile Include="TwoComplacent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LinearFeedbackShift.h" />
     <ClInclude Include="SevenSegmentDisplay.h" />
     <ClInclude Include="TwoComplacent.h" />
   </ItemGroup>
