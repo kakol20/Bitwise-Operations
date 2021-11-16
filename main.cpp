@@ -1,26 +1,20 @@
 #include <iostream>
 #include <bitset>
 #include <ctime>
-#include <chrono>
+//#include <chrono>
 
 #include "TwoComplacent.h"
 #include "SevenSegmentDisplay.h"
 #include "LinearFeedbackShift.h"
 
 //TwoComplacent Complacent;
+unsigned int LinearFeedbackShift::Seed = 0;
 
 int main() {
 	// get current time
-	/*std::time_t currentTime = time(0);
-	unsigned int state = static_cast<unsigned int>(currentTime);
-	std::cout << "Time: " << state << '\n' << '\n';*/
-	auto start = std::chrono::steady_clock::now();
-	auto end = std::chrono::steady_clock::now();
-
 	std::time_t currentTime = time(0);
 	unsigned int currentTimeUInt = static_cast<unsigned int>(currentTime);
-
-	unsigned int delta = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+	LinearFeedbackShift::Seed = currentTimeUInt;
 
 	// -----
 	int8_t a = TwoComplacent::OneToTwo(0b10110111);
@@ -43,9 +37,6 @@ int main() {
 
 	std::cout << std::bitset<8>(e) << '\n';
 	std::cout << std::bitset<8>(ssd) << '\n' << '\n';
-
-	end = std::chrono::steady_clock::now();
-	delta = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() + currentTimeUInt;
 	//std::cout << delta << '\n';
 
 	// linear feedback shift register
@@ -53,7 +44,7 @@ int main() {
 	for (int i = 0; i < 20; i++) {
 		currentTimeUInt++;
 
-		unsigned int random = LinearFeedbackShift::RandUInt(currentTimeUInt);
+		unsigned int random = LinearFeedbackShift::RandUInt();
 
 		std::cout << "Random uint: " << random << '\n';
 	}
@@ -62,7 +53,7 @@ int main() {
 	for (int i = 0; i < 20; i++) {
 		currentTimeUInt++;
 
-		int random = LinearFeedbackShift::RandInt(currentTimeUInt);
+		int random = LinearFeedbackShift::RandInt();
 
 		std::cout << "Random int: " << random << '\n';
 	}
@@ -71,7 +62,7 @@ int main() {
 	for (int i = 0; i < 20; i++) {
 		currentTimeUInt++;
 
-		float random = LinearFeedbackShift::RandF(currentTimeUInt);
+		float random = LinearFeedbackShift::RandF();
 
 		std::cout << "Random float: " << random << '\n';
 	}

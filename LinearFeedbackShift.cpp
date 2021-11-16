@@ -24,41 +24,40 @@ LinearFeedbackShift::LinearFeedbackShift() {
 //    return (float)out / (float)UINT_MAX;;
 //}
 
-float LinearFeedbackShift::RandF(const unsigned int seed) {
-	unsigned int state = seed;
+float LinearFeedbackShift::RandF() {
+	//unsigned int state = seed;
 	unsigned int out = 0;
 
 	// 32,22,2,1
 	for (int i = 31; i >= 0; i--) {
-		out = out | ((state & 0b1) << i);
+		out = out | ((LinearFeedbackShift::Seed & 0b1) << i);
 
-		int newbit = state ^ (state >> 1) ^ (state >> 2) ^ (state >> 22);
+		int newbit = LinearFeedbackShift::Seed ^ (LinearFeedbackShift::Seed >> 1) ^ (LinearFeedbackShift::Seed >> 2) ^ (LinearFeedbackShift::Seed >> 22);
 		newbit = newbit & 0b1;
 
-		state = (state >> 0b1) | (newbit << 31);
+		LinearFeedbackShift::Seed = (LinearFeedbackShift::Seed >> 0b1) | (newbit << 31);
 	}
 
 	return (float)out / (float)UINT_MAX;
 }
 
-float LinearFeedbackShift::RandFRange(const float min, const float max, const unsigned int seed) {
+float LinearFeedbackShift::RandFRange(const float min, const float max) {
 	float difference = max - min;
-	float random = LinearFeedbackShift::RandF(seed);
+	float random = LinearFeedbackShift::RandF();
 	return (difference * random) + min;
 }
 
-int LinearFeedbackShift::RandInt(const int seed) {
-	int state = seed;
+int LinearFeedbackShift::RandInt() {
 	int out = 0;
 
 	// 32,22,2,1
 	for (int i = 31; i >= 0; i--) {
-		out = out | ((state & 0b1) << i);
+		out = out | ((LinearFeedbackShift::Seed & 0b1) << i);
 
-		int newbit = state ^ (state >> 1) ^ (state >> 2) ^ (state >> 22);
+		int newbit = LinearFeedbackShift::Seed ^ (LinearFeedbackShift::Seed >> 1) ^ (LinearFeedbackShift::Seed >> 2) ^ (LinearFeedbackShift::Seed >> 22);
 		newbit = newbit & 0b1;
 
-		state = (state >> 0b1) | (newbit << 31);
+		LinearFeedbackShift::Seed = (LinearFeedbackShift::Seed >> 0b1) | (newbit << 31);
 	}
 
 	return out;
@@ -85,18 +84,17 @@ int LinearFeedbackShift::RandInt(const int seed) {
 //	return out;
 //}
 
-unsigned int LinearFeedbackShift::RandUInt(const unsigned int seed) {
-	unsigned int state = seed;
+unsigned int LinearFeedbackShift::RandUInt() {
 	unsigned int out = 0;
 
 	// 32,22,2,1
 	for (int i = 31; i >= 0; i--) {
-		out = out | ((state & 0b1) << i);
+		out = out | ((LinearFeedbackShift::Seed & 0b1) << i);
 
-		unsigned int newbit = state ^ (state >> 1) ^ (state >> 2) ^ (state >> 22);
+		unsigned int newbit = LinearFeedbackShift::Seed ^ (LinearFeedbackShift::Seed >> 1) ^ (LinearFeedbackShift::Seed >> 2) ^ (LinearFeedbackShift::Seed >> 22);
 		newbit = newbit & 0b1;
 
-		state = (state >> 0b1) | (newbit << 31);
+		LinearFeedbackShift::Seed = (LinearFeedbackShift::Seed >> 0b1) | (newbit << 31);
 	}
 	return out;
 }
