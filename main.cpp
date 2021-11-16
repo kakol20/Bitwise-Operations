@@ -10,7 +10,6 @@
 //TwoComplacent Complacent;
 
 int main() {
-
 	// get current time
 	/*std::time_t currentTime = time(0);
 	unsigned int state = static_cast<unsigned int>(currentTime);
@@ -37,7 +36,7 @@ int main() {
 	std::cout << std::bitset<8>(c) << '\n';
 	std::cout << std::bitset<8>(d) << '\n';
 	std::cout << static_cast<int>(d) << '\n' << '\n';
-	
+
 	// seven segment display
 	int8_t e = -1;
 	uint8_t ssd = SevenSegmentDisplay::Decode4Bit(e);
